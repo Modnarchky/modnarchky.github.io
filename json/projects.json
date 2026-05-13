@@ -1,0 +1,44 @@
+[
+  {
+    "id": "healgen",
+    "title": "Product Launch for Healgen Combo 3 in 1 Test Kits",
+    "tags": "Visual Design",
+    "thumbnail": "https://res.cloudinary.com/dkvnulmx9/image/upload/v1777905124/healgen-product-photos_thumbnail_qiocls.webp",
+    "url": "/portfolio/projects/healgen-product-launch.html",
+    "role":"Photographer, Photo Editor, Designer",
+    "deliverables":"Final Packaging Design, Product Photos, Promotional Brochure, Website Banners",
+    "tools": "Adobe Lightroom, Adobe Photoshop, Adobe Illustrator, Smartphone Camera",
+    "featured": true
+  },
+  {
+    "id": "schemes",
+    "title": "Logo Design and Loader Design for  Schemes SG",
+    "tags": "Brand Identity, Motion Graphics",
+    "thumbnail": "https://res.cloudinary.com/dkvnulmx9/image/upload/v1777905882/SchemesSg_thumbnail_g06tfp.webp",
+    "url": "/portfolio/projects/schemes-sg.html",
+    "tools": "Adobe Lightroom, Adobe Photoshop, Adobe Illustrator, Smartphone Camera",
+    "featured": true
+  },
+  {
+    "id": "clarityscreening-training-video",
+    "title": "Training Video for Drug Test Collectors - ClarityScreening",
+    "tags": "Video Editing",
+    "thumbnail": "https://res.cloudinary.com/dkvnulmx9/image/upload/v1777387147/clarityscreening-training-video-thumbnail_qqtah2.webp",
+    "url": "/portfolio/projects/clarityscreening-training-video.html",
+    "role":"Director, Producer, Camera Operator (Mobile), Video Editor",
+    "deliverables":"Training Video",
+    "tools": "Adobe After Effects, Adobe Premiere Pro, Adobe Photoshop, Smartphone Camera",
+    "featured": true
+  },
+  {
+    "id": "ambition-shared-services-campaign",
+    "title": "Campaign: Shared Services 2024 - Ambition Asia",
+    "tags": "Video Editing, Visual Design",
+    "thumbnail": "https://res.cloudinary.com/dkvnulmx9/image/upload/v1778693794/Thumbnail_2026_legdev.webp",
+    "url": "/portfolio/projects/ambition-shared-services-campaign-2024.html",
+    "role":"Designer, Video Editor",
+    "deliverables":"Informative Video, Informative Social Media Posts, Recruitment Posts, Blog Images",
+    "tools": "Adobe Illustrator, Adobe After Effects, Adobe Photoshop",
+    "featured": false
+  }
+]

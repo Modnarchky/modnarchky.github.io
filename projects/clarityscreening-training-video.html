@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://res.cloudinary.com/dkvnulmx9/image/upload/v1777386339/JG_Brand_Assets_Logo_bporus.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/projects.css">
+    <link rel="stylesheet" href="../css/tags.css">
+    <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body data-project-id="clarityscreening-training-video">
+  <header id="header"></header>
+  <section id="breadcrumbs" class="container left">
+   <nav>
+     <a href="/portfolio/index.html">Home</a><span class="material-icons current">chevron_left</span>
+     <a href="/portfolio/projects.html" class="current">Projects</a><span class="material-icons">chevron_left</span>
+     <span id="breadcrumbTitle"></span>
+   </nav>
+  </section>
+  <section id="projects" class="container center video-wrapper">
+     <iframe width="100%" height="680px" aspect-ratio="16 / 9" src="https://www.youtube.com/embed/fqmM4ZAx--g" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+     </iframe>
+  </section>
+  <section id="project-details" class="container left">
+    <div id="project-header" class="column">
+    <h2 id="projectTitle"></h2>
+     <div id="projectTags" class="tag-spacer"></div>
+     </div>
+    <div class="row column-layout">
+      <div style="flex: 1;">
+       <h5>My Role</h5>
+       <p id="projectRole"></p>
+      </div>
+      <div style="flex: 1;">
+       <h5>Deliverable</h5>
+       <p id="projectDeliverables"></p>
+      </div>
+      <div style="flex: 1;">
+        <h5>Target Audience</h5>
+        <p>Drug Test Collectors worldwide
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row left column-layout">
+     <div style="flex: 1">
+       <h3>Project Overview</h3>
+       <p>This training video is a revamp of existing content designed for drug test collectors worldwide. It demonstrates the proper procedures for collecting urine samples, ensuring compliance with industry standards and regulations. It serves as an essential resource for training new collectors and reinforcing best practices among experienced professionals.
+       </p></div>
+     <div style="flex: 1;">
+       <h3>Challenge</h3>
+       <p>The original video was outdated and lacked engagement, standing at 20 minutes long. The challenge was to create a more concise and visually focused video that effectively communicates the necessary information while keeping the audience engaged throughout. I worked with limited resources, without a proper phone tripod or professional lighting, and had to rely on creative solutions to achieve a polished final product.
+       </p></div>
+     <div style="flex: 1;">
+      <h3>Tools</h3>
+      <p id="projectTools"></p>
+     </div>
+    </div>
+  </section>
+  <section id="project-details" class="container left">
+    <h3>Process</h3>
+    <div class="bordered-section row left column-layout">
+      <div style="flex: 1;">
+        <h2>01</h2>
+        <h4>Pre-production</h4>
+        <p>I transcribed the previous video with Adobe Premiere Pro and created a detailed script outlining the key points and visual elements needed for the revised version.</p>
+      </div>
+      <div style="flex: 1;">
+        <h2>02</h2>
+        <h4>Production</h4>
+        <p>Working with my colleagues, I directed them through the filming process, giving them pointers on how to act and what to do. Using a smartphone camera and available lighting, I filmed the scenes focusing on clear demonstrations and concise explanations, while ensuring that the scenes flow properly to the next. The scenes with a narrator were filmed with a Macbook teleprompter setup.</p>
+      </div>
+      <div style="flex: 1;">
+        <h2>03</h2>
+        <h4>Post-production</h4>
+        <p>I composited and colour graded the video clips with Adobe Premiere Pro, and created the required motion graphics and animations with Adobe After Effects. Some of the images also required digital manipulation and this is executed in Adobe Photoshop. I added text overlays and graphics to enhance understanding, and ensured smooth transitions between scenes. Captions are also added to help collectors whose native language may not be English.</p>
+      </div>
+    </div>
+  </section>
+  <section id="project-details" class="container left">
+     <h3>Key Takeaways</h3>
+     <p>This project reinforced the importance of clear and concise storytelling in informative and training content. Considering the natual attention span of humans, it is critical to reduce the timing of the training video. The video is created for drug test collectors worldwide, and English may not be their first language. taught me how to work with limited resources and still produce a high-quality video. It also reinforced the importance of clear communication and concise storytelling in educational content, as well as the value of collaboration and adaptability in the production process.</p>
+  </section>
+  <div id="lightbox-compare" class="lightbox">
+    <div class="before-after-container lightbox-compare-slider">
+      <button class="lightbox-close" id="lightboxClose">
+        <span class="material-icons">close</span>
+      </button>
+      <img id="lb-after" class="after-img">
+      <div class="after-label">
+        <h3>After</h3>
+      </div>
+      <div class="before-wrapper">
+        <img id="lb-before" class="before-img">
+        <div class="before-label">
+          <h3>Before</h3>
+        </div>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="slider">
+      <div class="slider-line"></div>
+    </div></div>
+    <div id="lightbox-zoom" class="lightbox-zoom">
+
+  <div class="lightbox-zoom-content">
+
+    <button class="lightbox-close" id="lightboxZoomClose">
+      <span class="material-icons">close</span>
+    </button>
+
+    <div class="zoom-container">
+      <img id="lightboxZoomImg" class="lightbox-zoom-img" src="" alt="">
+    </div>
+
+  </div>
+
+</div>
+  <script src="../javascript/base.js"></script>
+  <script src="../javascript/project-page.js"></script>
+  <script src="../javascript/carousel.js"></script>
+  <script src="../javascript/header.js"></script>
+  <script src="../javascript/tags.js"></script>
+  <script src="../javascript/lightbox.js"></script>
+</body>
