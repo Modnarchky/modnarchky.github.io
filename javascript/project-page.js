@@ -1,4 +1,4 @@
-fetch('/portfolio/json/projects.json')
+fetch('./json/projects.json')
   .then(res => res.json())
   .then(projects => {
 
