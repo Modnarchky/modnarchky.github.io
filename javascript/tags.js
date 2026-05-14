@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           tagContainer.innerHTML = tags
             .map(tag => `
-              <a class="tag-pill" href="/portfolio/projects.html?tag=${slugify(tag)}">
+              <a class="tag-pill" href="/projects.html?tag=${slugify(tag)}">
                 ${tag}
               </a>
             `)
