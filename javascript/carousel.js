@@ -1,29 +1,34 @@
-const carousel = document.getElementById('carousel');
+const carousel = document.getElementById("carousel");
 
-// Wait for layout to fully load (important for images/fonts)
-window.addEventListener('load', () => {
+let speed = 1;
+let offset = 0;
+let halfWidth = 0;
+
+function setup() {
   const items = Array.from(carousel.children);
-  
-  // Clone items for seamless loop
-  items.forEach(item => {
-    carousel.appendChild(item.cloneNode(true));
+
+  // duplicate once for seamless loop
+  items.forEach(el => {
+    carousel.appendChild(el.cloneNode(true));
   });
 
-  let scroll = 0;
-  const speed = 1;
+  // wait for layout AFTER images load
+  requestAnimationFrame(() => {
+    halfWidth = carousel.scrollWidth / 2;
+    animate();
+  });
+}
 
-  const halfWidth = carousel.scrollWidth / 2;
+function animate() {
+  offset += speed;
 
-  function animate() {
-    scroll += speed;
-
-    if (scroll >= halfWidth) {
-      scroll = 0;
-    }
-
-    carousel.style.transform = `translateX(-${scroll}px)`;
-    requestAnimationFrame(animate);
+  if (offset >= halfWidth) {
+    offset = 0;
   }
 
-  animate();
-});
+  carousel.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener("load", setup);

@@ -7,110 +7,139 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let index = 0;
   const total = slides.length;
+  const dots = [];
 
-  let isDragging = false;
+  const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+
   let startX = 0;
   let currentX = 0;
-
-  // =========================
-  // CORE SLIDER
-  // =========================
-  function updateSlider() {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    updateDots();
-  }
-
-  function next() {
-    index = (index + 1) % total; // ✅ LOOP FIX
-    updateSlider();
-  }
-
-  function prev() {
-    index = (index - 1 + total) % total; // ✅ LOOP FIX
-    updateSlider();
-  }
+  let dragging = false;
 
   // =========================
   // DOTS
   // =========================
   function createDots() {
+    const frag = document.createDocumentFragment();
+
     for (let i = 0; i < total; i++) {
       const dot = document.createElement("button");
       dot.className = "dot";
-
-      dot.addEventListener("click", () => {
-        index = i;
-        updateSlider();
-      });
-
-      dotsContainer.appendChild(dot);
+      dot.addEventListener("click", () => setIndex(i));
+      dots.push(dot);
+      frag.appendChild(dot);
     }
+
+    dotsContainer.appendChild(frag);
   }
 
   function updateDots() {
-    document.querySelectorAll(".dot").forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
-    });
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
   }
 
   // =========================
-  // BUTTONS
+  // BUTTON STATE (DESKTOP ONLY)
+  // =========================
+  function updateButtons() {
+    if (!nextBtn || !prevBtn) return;
+
+    if (isMobile) return;
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === total - 1;
+  }
+
+  // =========================
+  // RENDER
+  // =========================
+  function render() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+    updateButtons();
+  }
+
+  // =========================
+  // ANIMATED NAV (DESKTOP)
+  // =========================
+  function animateTo(newIndex, dir) {
+    track.style.transition = "transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1)";
+    index = newIndex;
+    render();
+  }
+
+  function next() {
+    if (index < total - 1) {
+      animateTo(index + 1, "next");
+    }
+  }
+
+  function prev() {
+    if (index > 0) {
+      animateTo(index - 1, "prev");
+    }
+  }
+
+  function setIndex(i) {
+    const newIndex = Math.max(0, Math.min(i, total - 1));
+    index = newIndex;
+    render();
+  }
+
+  // =========================
+  // BUTTON EVENTS (DESKTOP ONLY)
   // =========================
   nextBtn?.addEventListener("click", next);
   prevBtn?.addEventListener("click", prev);
 
   // =========================
-  // SWIPE / DRAG (mouse + touch)
+  // SWIPE (MOBILE / TABLET)
   // =========================
-  const getX = (e) => e.clientX;
+  if (isMobile) {
+    track.style.touchAction = "pan-x";
+    track.style.transition = "transform 0.3s ease";
 
-  track.addEventListener("pointerdown", (e) => {
-    isDragging = true;
-    startX = getX(e);
-    track.setPointerCapture(e.pointerId);
-  });
+    track.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      startX = e.clientX;
 
-  track.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
+      track.style.transition = "none";
+    });
 
-    currentX = getX(e);
-    const diff = currentX - startX;
+    track.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
 
-    track.style.transition = "none";
-    track.style.transform = `translateX(calc(-${index * 100}% + ${diff}px))`;
-  });
+      currentX = e.clientX;
+      const diff = currentX - startX;
 
-  function endDrag(e) {
-    if (!isDragging) return;
+      track.style.transform =
+        `translateX(calc(-${index * 100}% + ${diff}px))`;
+    });
 
-    isDragging = false;
-    track.releasePointerCapture(e.pointerId);
+    track.addEventListener("pointerup", () => {
+      dragging = false;
 
-    const diff = currentX - startX;
-    const threshold = 80;
+      const diff = currentX - startX;
+      const threshold = 60;
 
-    track.style.transition = "transform 0.5s ease";
+      track.style.transition = "transform 0.3s ease";
 
-    if (diff > threshold) {
-      prev();
-    } else if (diff < -threshold) {
-      next();
-    } else {
-      updateSlider(); // snap back
-    }
+      if (diff < -threshold && index < total - 1) {
+        index++;
+      } else if (diff > threshold && index > 0) {
+        index--;
+      }
+
+      render();
+    });
+
+    track.addEventListener("pointercancel", () => {
+      dragging = false;
+      render();
+    });
   }
-
-  track.addEventListener("pointerup", endDrag);
-  track.addEventListener("pointercancel", () => {
-    isDragging = false;
-    updateSlider();
-  });
 
   // =========================
   // INIT
   // =========================
   createDots();
-  updateSlider();
-
-  window.addEventListener("resize", updateSlider);
+  render();
 });
