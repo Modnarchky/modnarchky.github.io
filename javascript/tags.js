@@ -52,10 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       /* =========================================================
          PROJECT LIST PAGE
       ========================================================= */
-
-      /* =========================================================
-         BUILD FILTER BUTTONS FROM JSON
-      ========================================================= */
       const filterContainer = document.getElementById("project-filters");
 
       if (filterContainer) {
@@ -73,19 +69,78 @@ document.addEventListener("DOMContentLoaded", () => {
         const uniqueTags = [...new Set(allTags)];
 
         filterContainer.innerHTML = `
-          <button class="filter-btn active" data-filter="all">
-            All
-          </button>
+          <div class="mobile-filter">
 
-          ${uniqueTags.map(tag => `
-            <button 
-              class="filter-btn" 
-              data-filter="${slugify(tag)}"
-            >
-              ${tag}
+            <button id="filter-toggle" class="filter-icon-btn">
+              <span class="material-icons">filter_list</span>
             </button>
-          `).join("")}
+
+            <div class="mobile-filter-menu">
+
+              <button 
+                class="filter-btn active" 
+                data-filter="all"
+              >
+                All
+              </button>
+
+              ${uniqueTags.map(tag => `
+                <button 
+                  class="filter-btn" 
+                  data-filter="${slugify(tag)}"
+                >
+                  ${tag}
+                </button>
+              `).join("")}
+
+            </div>
+          </div>
+
+          <div class="desktop-filters center">
+
+            <button 
+              class="filter-btn active" 
+              data-filter="all"
+            >
+              All
+            </button>
+
+            ${uniqueTags.map(tag => `
+              <button 
+                class="filter-btn" 
+                data-filter="${slugify(tag)}"
+              >
+                ${tag}
+              </button>
+            `).join("")}
+
+          </div>
         `;
+      }
+
+      /* =========================================================
+         MOBILE FILTER TOGGLE
+      ========================================================= */
+      const filterToggle = document.getElementById("filter-toggle");
+      const mobileMenu = document.querySelector(".mobile-filter-menu");
+
+      if (filterToggle && mobileMenu) {
+
+        filterToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("show");
+        });
+
+        // close menu when clicking outside
+        document.addEventListener("click", (e) => {
+
+          const insideMenu =
+            mobileMenu.contains(e.target) ||
+            filterToggle.contains(e.target);
+
+          if (!insideMenu) {
+            mobileMenu.classList.remove("show");
+          }
+        });
       }
 
       /* =========================================================
@@ -141,13 +196,13 @@ document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".project-link")
         );
 
-        // STEP 1: fade all out
+        // fade all out
         cards.forEach(card => {
           card.classList.remove("is-visible");
           card.classList.add("is-hidden");
         });
 
-        // STEP 2: filter after fade
+        // filter after fade
         setTimeout(() => {
 
           let delay = 0;
@@ -187,8 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /* =========================================================
          URL FILTER
-         example:
-         ?tag=visual-design
       ========================================================= */
       const urlParams = new URLSearchParams(window.location.search);
 
@@ -217,6 +270,11 @@ document.addEventListener("DOMContentLoaded", () => {
           filterProjects(filter);
 
           setActiveButton(filter);
+
+          // close mobile menu after selection
+          if (mobileMenu) {
+            mobileMenu.classList.remove("show");
+          }
 
           // update URL without reload
           const newUrl =

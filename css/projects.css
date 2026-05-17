@@ -417,4 +417,9 @@
   height: 100%;
 }
 
+.lightbox-zoom {
+    transform: none !important;
+    pointer-events: none;
+}
+
 }

@@ -18,27 +18,48 @@
 <body data-title="Projects">
   <header id="header"></header>
   <!-- Services Section -->
-    <section id="what-i-can-do" class="center container">
-      <h2 id="pageTitleText"></h2>
-<div id="project-filters" class="center container">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="Visual Design">Visual Design</button>
-  <button class="filter-btn" data-filter="Brand Identity">Brand Identity</button>
-  <button class="filter-btn" data-filter="Video Editing">Video Editing</button>
-  <button class="filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
-  <button class="filter-btn" data-filter="UIUX Design">UIUX Design</button>
-</div>
+    <section id="project-page" class="center container">
+      <div id="projectTagAlign">
+      <div style="flex: 1;">
+      <h2 id="pageTitleText"></h2></div>
+      <div style="flex: 1;">
+      <div id="project-filters" class="center container">
+        <!-- Mobile Filter -->
+        <div class="mobile-filter">
+          <button id="filter-toggle" class="filter-icon-btn">
+            <span class="material-icons">filter_list</span>
+          </button>
+
+          <div class="mobile-filter-menu">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Visual Design">Visual Design</button>
+            <button class="filter-btn" data-filter="Brand Identity">Brand Identity</button>
+            <button class="filter-btn" data-filter="Video Editing">Video Editing</button>
+            <button class="filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
+            <button class="filter-btn" data-filter="UIUX Design">UIUX Design</button>
+          </div>
+        </div>
+        <!-- Desktop Filter -->
+        <div class="desktop-filters center">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Visual Design">Visual Design</button>
+          <button class="filter-btn" data-filter="Brand Identity">Brand Identity</button>
+          <button class="filter-btn" data-filter="Video Editing">Video Editing</button>
+          <button class="filter-btn" data-filter="Motion Graphics">Motion Graphics</button>
+          <button class="filter-btn" data-filter="UIUX Design">UIUX Design</button>
+        </div>
+      </div>
+    </div>
+      </div>
 
   <!-- Projects Section -->
-  <section id="featured-projects" class="left container">
-  <div id="projectsGrid"></div>
-</section>
+  <div id="featured-projects" class="center container">
+  <div id="projectsGrid"></div></div>
 </section>
   <script src="./javascript/base.js"></script>
+  <script src="./reload.js"></script>
   <script src="./javascript/animation.js"></script>
-  <script src="./javascript/carousel.js"></script>
   <script src="./javascript/header.js"></script>
-  <script src="./javascript/testimonial.js"></script>
   <script src="./javascript/pageTitleText.js"></script>
   <script src="./javascript/tags.js"></script>
   <script src="./javascript/projects.js"></script>

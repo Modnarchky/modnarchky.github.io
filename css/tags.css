@@ -1,8 +1,45 @@
 #project-filters {
-  margin-bottom: 20px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+#project-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* title + filters stacked vertically */
+#project-page > h2,
+#project-filters {
+  width: 100%;
+}
+
+#filter-toggle{
+  border: none;
+  background: none;
+  min-width: 40px;
+}
+
+#filter-toggle .material-icons{
+  font-size: var(--text-xl);
+}
+
+
+.desktop-filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Mobile hidden by default */
+.mobile-filter {
+  display: none;
 }
 
 .filter-btn {
@@ -52,4 +89,92 @@
 .tag-pill:hover {
   transform: scale(1.1);
   box-shadow: 4px 6px 0px var(--color-border);
+}
+
+@media (max-width: 768px) {
+
+  #project-page {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* THIS is the key: title + filters row */
+  #project-page > h2,
+  #project-filters {
+    width: auto;
+  }
+
+  #projectTagAlign > div:first-child {
+    flex: 1;
+  }
+
+  /* RIGHT side (filters) */
+  #projectTagAlign > div:last-child {
+    flex: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* row container */
+  #project-filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 100%;
+    flex-wrap: nowrap;   /* IMPORTANT */
+  }
+
+  /* prevent title wrapping awkwardly */
+  #pageTitleText {
+    margin: 0;
+    white-space: nowrap;
+    text-align: left;
+  }
+  
+  .mobile-filter {
+    display: flex;   /* or block */
+    align-items: center;
+    margin-left: auto; 
+    justify-content: center;
+  }
+
+  .desktop-filters {
+    display: none;
+  }
+
+  .mobile-filter-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  padding: 1rem;
+  border-radius: 12px;
+
+  background: white;
+  z-index: 100;
+}
+
+.mobile-filter-menu.show {
+  display: flex;
+  flex-direction: column;
+}
+#projectTagAlign{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+#featured-projects{
+align-items: center;
+}
 }
